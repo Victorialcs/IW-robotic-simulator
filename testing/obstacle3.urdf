@@ -1,0 +1,87 @@
+<?xml version="1.0" ?>
+<robot name="custom_box_structure">
+  <!-- Base box: 4x1x1 -->
+  <link name="base_link">
+    <inertial>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <mass value="1"/>
+      <inertia ixx="0.02" ixy="0" ixz="0" iyy="0.02" iyz="0" izz="0.02"/>
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <box size="4 1 0.5"/>
+      </geometry>
+      <material name="gray">
+        <color rgba="0.5 0.5 0.5 1"/>
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <box size="4 1 0.5"/>
+      </geometry>
+    </collision>
+  </link>
+
+  <!-- Second box: 1x2x1 placed on top of the most right of the base box -->
+  <link name="top_box">
+    <inertial>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <mass value="1"/>
+      <inertia ixx="0.02" ixy="0" ixz="0" iyy="0.02" iyz="0" izz="0.02"/>
+    </inertial>
+    <visual>
+      <origin xyz="1 0.5 -1" rpy="0 0 0"/>
+      <geometry>
+        <box size="1 3 0.5"/>
+      </geometry>
+      <material name="gray">
+        <color rgba="0.5 0.5 0.5 1"/>
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="1 0.5 -1" rpy="0 0 0"/>
+      <geometry>
+        <box size="1 3 0.5"/>
+      </geometry>
+    </collision>
+  </link>
+
+  <!-- Fixed joint to attach the second box to the base -->
+  <joint name="fixed_joint" type="fixed">
+    <parent link="base_link"/>
+    <child link="top_box"/>
+    <origin xyz="1.5 0.5 1" rpy="0 0 0"/>
+  </joint>
+
+  <link name="right_box">
+    <inertial>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <mass value="1"/>
+      <inertia ixx="0.02" ixy="0" ixz="0" iyy="0.02" iyz="0" izz="0.02"/>
+    </inertial>
+    <visual>
+      <origin xyz="1 0.5 -1" rpy="0 0 0"/>
+      <geometry>
+        <box size="1 1 0.5"/>
+      </geometry>
+      <material name="gray">
+        <color rgba="0.5 0.5 0.5 1"/>
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="1 0.5 -1" rpy="0 0 0"/>
+      <geometry>
+        <box size="1 1 0.5"/>
+      </geometry>
+    </collision>
+  </link>
+
+  <joint name="third_box_joint" type="fixed">
+    <parent link="top_box"/>
+    <child link="right_box"/>
+    <origin xyz="1 1 0" rpy="0 0 0"/>
+  </joint>
+
+</robot>

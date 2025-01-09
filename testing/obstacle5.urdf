@@ -1,0 +1,26 @@
+<?xml version="1.0" ?>
+<robot name="box">
+  <link name="boxLink">
+    <visual>
+      <origin rpy="0 0 0" xyz="0 0 0"/> <!-- Positioning the box center at 1 unit height -->
+      <geometry>
+        <box size="1 3 0.5"/> <!-- The box size is 2x2x2 units -->
+      </geometry>
+      <material name="gray">
+        <color rgba="0.5 0.5 0.5 1"/> <!-- Gray color for the box -->
+      </material>
+    </visual>
+    <collision>
+      <origin rpy="0 0 0" xyz="0 0 0"/> <!-- Matching the visual origin -->
+      <geometry>
+        <box size="1 3 0.5"/> <!-- Matching the visual geometry for collision -->
+      </geometry>
+    </collision>
+    <inertial>
+      <origin rpy="0 0 0" xyz="0 0 0"/> <!-- Center of mass at the center of the box -->
+      <mass value="1"/> <!-- Arbitrary mass value for the box -->
+      <inertia ixx="0.33" ixy="0" ixz="0" iyy="0.33" iyz="0" izz="0.33"/>
+    </inertial>
+  </link>
+</robot>
+

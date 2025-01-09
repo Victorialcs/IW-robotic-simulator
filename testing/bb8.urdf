@@ -1,0 +1,59 @@
+<?xml version="1.0"?>
+<robot name="bb8">
+
+  <!-- BB8 body -->
+  <link name="body">
+    <inertial>
+      <mass value="10.0"/>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <inertia ixx="0.1" ixy="0.0" ixz="0.0" iyy="0.1" iyz="0.0" izz="0.1"/>
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <sphere radius="0.5"/>
+      </geometry>
+      <material name="orange">
+        <color rgba="1 0.5 0 1"/>
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <sphere radius="0.5"/>
+      </geometry>
+    </collision>
+  </link>
+
+  <!-- BB8 head -->
+  <link name="head">
+    <inertial>
+      <mass value="1.0"/>
+      <origin xyz="0 0 0.6" rpy="0 0 0"/>
+      <inertia ixx="0.01" ixy="0.0" ixz="0.0" iyy="0.01" iyz="0.0" izz="0.01"/>
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0.6" rpy="0 0 0"/>
+      <geometry>
+        <sphere radius="0.2"/>
+      </geometry>
+      <material name="gray">
+        <color rgba="0.7 0.7 0.7 1"/>
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0 0 0.6" rpy="0 0 0"/>
+      <geometry>
+        <sphere radius="0.2"/>
+      </geometry>
+    </collision>
+  </link>
+
+  <!-- Joint between body and head (fixed) -->
+  <joint name="body_to_head" type="fixed">
+    <parent link="body"/>
+    <child link="head"/>
+    <origin xyz="0 0 0" rpy="0 0 0"/>
+  </joint>
+
+</robot>
